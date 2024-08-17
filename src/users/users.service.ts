@@ -22,8 +22,16 @@ export class UsersService {
       userName: createUserDto.userName,
     });
 
+    const userEmail = await this.usersModel.findOne({
+      email: createUserDto.email,
+    });
+
     if (user) {
       throw new BadRequestException('username already useIn');
+    }
+
+    if (userEmail) {
+      throw new BadRequestException('useremail already useIn');
     }
 
     const { password, ...userDto } = createUserDto;
@@ -136,17 +144,17 @@ export class UsersService {
   }
 
 
-  async findOne(id : string) {
-
-    if (!id) {
-      throw new UnauthorizedException('user not found!');
+  async findOne(id: string) {
+    if (!id || !mongoose.Types.ObjectId.isValid(id)) {
+      throw new UnauthorizedException('Invalid or missing user ID!');
     }
+  
     const user = await this.usersModel.findById(new mongoose.Types.ObjectId(id));
-
+  
     if (!user) {
-      throw new UnauthorizedException('user not found!');
+      throw new UnauthorizedException('User not found!');
     }
-
-    return user
+  
+    return user;
   }
 }
