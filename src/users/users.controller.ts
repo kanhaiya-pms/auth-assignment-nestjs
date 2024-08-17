@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Res } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { LoginUserDto } from './dto/login-user.dto';
+import { ForgetUserDto } from './dto/forget-user.dto';
+import { OtpVerifyDto } from './dto/otpVerify.dto';
 
 
 @ApiTags('users')
@@ -21,6 +23,21 @@ export class UsersController {
     return this.usersService.login(loginUserDto);
   }
 
+
+  @Post("forgetpass")
+  sendEmail(@Body() dto: ForgetUserDto) {
+    return this.usersService.sendEmail(dto)
+  }
+
+  @Post("verifyotp")
+  otpVerify(@Body() dto: OtpVerifyDto) {
+    return this.usersService.otpVerify(dto)
+  }
+
+  @Get(":id")
+  findOne(@Param("id") id: string ) {
+    return this.usersService.findOne(id)
+  }
  
   
 }
