@@ -38,7 +38,7 @@ export class LeadsService {
     return await this.leadsModel.find();
   }
 
- async findOne(id: number) {
+ async findOne(id: string) {
     return await this.leadsModel.findById(id);
   }
 

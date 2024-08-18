@@ -26,7 +26,7 @@ export class LeadsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.leadsService.findOne(+id);
+    return this.leadsService.findOne(id);
   }
 
   @Patch(':id')
