@@ -93,8 +93,8 @@ export class UsersService {
         to: `${user.email}, kanhaiyanri43@gmail.com`,
         subject: 'Reset - passwordr',
         html: ` <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-              <h2>Welcome ${user.name} to auth-web-application!</h2>
-              <p>Your User-name ${user.userName}</p>
+              <h2>Welcome, <span style="color:blue; font-weight: bold;"> ${user.name} </span> to auth-web-application!</h2>
+              <h3>Your User-name ${user.userName}</h3>
               <p>Your OTP for forget-password is:</p>
               <p style="font-size: 24px; color:green; font-weight: bold;">${genOtp}</p>
               <p>Please enter this OTP to reset your password.</p>
