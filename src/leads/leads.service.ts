@@ -32,7 +32,7 @@ export class LeadsService {
   }
 
  async update(id: string, updateLeadDto: UpdateLeadDto) {
-    return await this.leadsModel.findByIdAndUpdate(id,updateLeadDto);
+    return await this.leadsModel.findByIdAndUpdate(id,updateLeadDto,{lean: true});
   }
 
   async remove(id: string) {
