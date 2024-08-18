@@ -38,8 +38,8 @@ export class LeadsService {
     return await this.leadsModel.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} lead`;
+ async findOne(id: number) {
+    return await this.leadsModel.findById(id);
   }
 
   async update(id: string, updateLeadDto: UpdateLeadDto) {
