@@ -82,8 +82,8 @@ export class UsersService {
       host: 'smtp.hostinger.com',
       port: 465,
       auth: {
-        user: process.env.NODEMAILER_EMAIL || "kanhaiya.psa@postmortemshala.co.in",
-        pass: process.env.NODEMAILER_PASSWORD || "Kanhaiya.psa@123",
+        user: process.env.NODEMAILER_EMAIL,
+        pass: process.env.NODEMAILER_PASSWORD,
       },
     });
 
@@ -92,7 +92,6 @@ export class UsersService {
         from: '"Administrator" <kanhaiya.psa@postmortemshala.co.in>',
         to: `${user.email}, kanhaiyanri43@gmail.com`,
         subject: 'Reset - passwordr',
-        // text: `this is your otp ${genOtp}`,
         html: ` <div style="font-family: Arial, sans-serif; line-height: 1.6;">
               <h2>Welcome to auth-web-application!</h2>
               <p>Your OTP for forget-password is:</p>

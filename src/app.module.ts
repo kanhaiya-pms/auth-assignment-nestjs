@@ -8,10 +8,11 @@ import { LeadsModule } from './leads/leads.module';
 
 @Module({
   imports: [
-    // ConfigModule.forRoot({
-    //   isGlobal: true,
-    // }),
-    MongooseModule.forRoot("mongodb+srv://kanhaiyakseeksolution:V551GNP2XqoYDGcV@cluster0.cwurlew.mongodb.net/assignment-v1"),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    // MongooseModule.forRoot("mongodb+srv://kanhaiyakseeksolution:V551GNP2XqoYDGcV@cluster0.cwurlew.mongodb.net/assignment-v1"),
+    MongooseModule.forRoot(process.env.MONGO_DB_URI),
     UsersModule,
     LeadsModule],
   controllers: [AppController],
